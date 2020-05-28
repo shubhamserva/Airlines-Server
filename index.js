@@ -33,10 +33,13 @@ app.use('/',routes);
 
  //<<------------------USed to add flights data to DB----------------->
 // let data  = {
-//   "fId":"AA4000",
-//   "fName":"Air Asia",
-//   "fTime":"15:00 HRS",
-//   "fDate":"1/1/2020",
+//   "fId":"IN9098",
+//   "fName":"INDIGO",
+//   "fTime":"21:00 HRS",
+//   "fDate":"5/1/2020",
+//   "fServices":['Pani','Water'],
+//   "fMeals":['Maggie','Juice'],
+//   "fShoppingItems":['Magzine','Doll']
 // }
 // var Flight = new flight(data);
 // Flight.save((err,res)=>{
@@ -46,18 +49,20 @@ app.use('/',routes);
 
 //<<<<<-------Add passenger Data to DB------------------>
 // let pData  = {
-// "fId" :"IN3000",
-// "pName":"Chaman",
-// "PNR":"CH123",
+// "fId" :"IN9098",
+// "pName":"Baccha",
+// "PNR":"NEW909",
 // "Infant":"false",
-// "Check_In_Status":"true",
+// "Check_In_Status":"false",
 // "WheelChair":"false",
 // "Services":"",
-// "SeatNo":"2A",
-// "Passport":"UHBNJI",
+// "SeatNo":"",
+// "Passport":"",
 // "Address":"",
 // "DOB":"1/1/2000",
-// "ShopRequests":""
+// "ShopRequests":"",
+// "food":"Water"
+
 // }
 // var pdata = new passenger(pData);
 // pdata.save((err,res)=>{

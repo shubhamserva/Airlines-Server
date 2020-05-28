@@ -15,7 +15,20 @@ const flights = moongoose.Schema({
     fDate:{
         type:String,
         required:true
-    }
+    },
+    fServices:{
+        type:[],
+        required:true
+    },
+    fMeals:{
+        type:[],
+        required:true
+    },
+    fShoppingItems:{
+        type:[],
+        required:true
+    },
+    
 
 })
 

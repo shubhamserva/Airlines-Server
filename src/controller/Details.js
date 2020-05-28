@@ -13,12 +13,10 @@ function getFlights(req,res) {
         response.status.message = "Flights Fetched";
         res.status(200).json(response);
     })
-
 }
 
 function addFlights(req, res) {
     const response = new Response();
-    console.log("The req is"+ req.body);
     updateServices.saveFlights(req.body).then((data)=>{
         response.data.result = data;
         response.status.statusCode = 200;
@@ -31,11 +29,6 @@ function addFlights(req, res) {
 function test(req,res) {
     res.send("here test");
 }
-
-function test1(req,res) {
-    res.send("here test 1");
-}
-
 function updatePassenger(req, res) {
     const response = new Response();
     console.log("update cntoler");
@@ -50,7 +43,6 @@ function updatePassenger(req, res) {
         res.status(500).json(err);
     })
 }
-
 function addPassenger(req, res) {
     const response = new Response();
     updateServices.addPassenger(req.body).then((result) => {
@@ -67,6 +59,7 @@ function addPassenger(req, res) {
 
 }
 function getPassengers(req,res){
+    
     const response = new Response();
     updateServices.getPassengers(req.query).then((result)=>{
         response.data.result = result;
@@ -92,11 +85,120 @@ function deleteFlights(req){
         res.status(500).json(err);
     })
 }
-module.exports = { getFlights,
-                   addPassenger,
-                test,
-                test1,
-                addFlights,
-                getPassengers,
-                deleteFlights,
-                updatePassenger}
+
+function addShopItem(req,res) {
+    const response = new Response();
+    updateServices.addShopItem(req.body).then((res)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "Shopping Item Added";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to add Shopping Item";
+        res.status(500).json(err);
+    })
+}
+
+function addService(req,res) {
+    const response = new Response();
+    updateServices.addService(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "service Added";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to Add Service";
+        res.status(500).json(err);
+    })
+}
+function checkIn(req,res) {
+    const response = new Response();
+    updateServices.checkIn(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "checkIn Completed";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to Check-In";
+        res.status(500).json(err);
+    })
+}
+function changeSeat(req,res) {
+    const response = new Response();
+    updateServices.changeSeat(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "Seat Updated";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to update Seat";
+        res.status(500).json(err);
+    })
+}
+function updateMeal(req,res) {
+    const response = new Response();
+    updateServices.updateMeal(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "Meals Fetched";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to Fetch Meal";
+        res.status(500).json(err);
+    })
+}
+
+function getServices(req,res) {
+   
+    const response = new Response();
+    updateServices.getServices(req.query).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "SERvices Fetched";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to Fetch SERVICES";
+        res.status(500).json(err);
+    })
+}
+function addAncillaryServices(req,res) {
+    const response = new Response();
+    updateServices.addAncillaryServices(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "SERvices addded";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to add SERVICES";
+        res.status(500).json(err);
+    })
+}
+function removeAncillaryItems(req,res) {
+    const response = new Response();
+    updateServices.removeAncillaryItems(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "SERvices removed";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to remove";
+        res.status(500).json(err);
+    })
+}
+
+
+
+
+
+module.exports = { getFlights,addPassenger,test,addFlights,
+                    getPassengers,deleteFlights,updatePassenger,
+                    addShopItem,addService,checkIn,getServices,
+                    updateMeal,addAncillaryServices,removeAncillaryItems}

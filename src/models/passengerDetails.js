@@ -28,7 +28,6 @@ const passengerDetail  = moongoose.Schema({
     },
     SeatNo:{
         type:String,
-        required:true
     },
     Passport:{
         type:String,
@@ -42,6 +41,9 @@ const passengerDetail  = moongoose.Schema({
     ShopRequests:{
         type:[]
     },
+    food:{
+        type:String
+    }
 })
 
 module.exports = moongoose.model('pDetails',passengerDetail);
