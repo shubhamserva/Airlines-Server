@@ -18,7 +18,7 @@ function addPassenger(req) {
 function updatePassenger(req) {
     return new Promise((resolve, reject) => {
         //console.log("the update p details are");
-        console.log(req)
+        console.log("req in ",req)
         const passenger = new passengerDetails(req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $set: {
@@ -87,8 +87,6 @@ function deleteFlights(req) {
         });
     })
 }
-
-
 function addShopItem(req) { 
     return new Promise((resolve, reject) => {
         
@@ -107,7 +105,6 @@ function addShopItem(req) {
         });
     })
 }
-
 function addService(req) {
     return new Promise((resolve, reject) => {
         //console.log("the add service data is");
@@ -128,7 +125,6 @@ function addService(req) {
         });
     })
 }
-
 function checkIn(req) {
     return new Promise((resolve, reject) => {
         //console.log("the Seat to update");
@@ -147,7 +143,6 @@ function checkIn(req) {
         });
     })
 }
-
 function updateMeal(req) {
     return new Promise((resolve, reject) => {
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
