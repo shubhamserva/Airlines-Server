@@ -6,7 +6,7 @@ function addPassenger(req) {
         const passenger = new passengerDetails(req);
         passenger.save((err, result) => {
             if (!err) {
-                console.log("Data inserted is ", result);
+                //console.log("Data inserted is ", result);
                 resolve(result);
             }
             else {
@@ -17,16 +17,16 @@ function addPassenger(req) {
 }
 function updatePassenger(req) {
     return new Promise((resolve, reject) => {
-        console.log("the update p details are");
+        //console.log("the update p details are");
         console.log(req)
         const passenger = new passengerDetails(req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $set: {
-                "Name": req.pName, "Passport": req.Passport, "Address": req.Address,
+                "Name": req.Name, "Passport": req.PassportNo, "Address": req.Address,
             }
         }, (err, result) => {
             if (!err) {
-                console.log("Data inserted is ", result);
+                //console.log("Data inserted is ", result);
                 resolve(result);
             }
             else {
@@ -53,7 +53,7 @@ function getPassengers(req) {
             then((result) => {
                 resolve(result);
             }).catch((err) => {
-                console.log("error is " + err);
+                //console.log("error is " + err);
                 reject(error);
             })
     })
@@ -63,7 +63,7 @@ function addFlights(req) {
         const Flight = new flights(req);
         Flight.save((err, result) => {
             if (!err) {
-                console.log("Data from DB is ", result);
+                //console.log("Data from DB is ", result);
                 resolve(result);
             }
             else {
@@ -74,11 +74,11 @@ function addFlights(req) {
 
 }
 function deleteFlights(req) {
-    console.log("the requested data is" + req.flightId);
+    //console.log("the requested data is" + req.flightId);
     return new Promise((resolve, reject) => {
         flights.deleteOne({ "fId": req.flightId }, (err, result) => {
             if (!err) {
-                console.log("Data from DB is ", result);
+                //console.log("Data from DB is ", result);
                 resolve(result);
             }
             else {
@@ -110,8 +110,8 @@ function addShopItem(req) {
 
 function addService(req) {
     return new Promise((resolve, reject) => {
-        console.log("the add service data is");
-        console.log(req)
+        //console.log("the add service data is");
+        //console.log(req)
         const passenger = new passengerDetails(req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $push: {
@@ -119,7 +119,7 @@ function addService(req) {
             }
         }, (err, result) => {
             if (!err) {
-                console.log("added service is ", result);
+                //console.log("added service is ", result);
                 resolve(result);
             }
             else {
@@ -131,8 +131,8 @@ function addService(req) {
 
 function checkIn(req) {
     return new Promise((resolve, reject) => {
-        console.log("the Seat to update");
-        console.log(req.SeatNo);
+        //console.log("the Seat to update");
+        //console.log(req.SeatNo);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $set: {
                 "SeatNo": req.SeatNo
@@ -170,7 +170,7 @@ function getServices(req) {
             then((result) => {
                 resolve(result);
             }).catch((err) => {
-                console.log("error is " + err);
+                //console.log("error is " + err);
                 reject(error);
             })
     })
@@ -193,11 +193,11 @@ function addAncillaryServices(req) {
     })
 }
 function removeAncillaryItems(req) {
-    console.log("aaya2");
+    //console.log("aaya2");
     return new Promise((resolve, reject) => {
        // var type1 = req.type;
-        console.log("tye is",req.type);
-        console.log("request her in servc",req)
+        //console.log("tye is",req.type);
+        //console.log("request her in servc",req)
         flights.findOneAndUpdate({ "fId": req.fId }, 
         { $pull: {
                 [req.type]: req.Service

@@ -14,12 +14,12 @@ mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true,
                         'useFindAndModify': false, 'useCreateIndex': true});
 const connection = mongoose.connection;
 connection.once("open", function() {
-  console.log("Connected to Database");
+  //console.log("Connected to Database");
   app.listen(PORT,()=>{
-        console.log("Airline server running at "+ PORT);
+        //console.log("Airline server running at "+ PORT);
       })
   }).catch((err) => {
-      console.log("Not Connected to Database ERROR! ", err);
+      //console.log("Not Connected to Database ERROR! ", err);
   });
 
 
@@ -43,8 +43,8 @@ app.use('/',routes);
 // }
 // var Flight = new flight(data);
 // Flight.save((err,res)=>{
-//   console.log("the err is"+ err);
-//   console.log("the result is "+ res);
+//   //console.log("the err is"+ err);
+//   //console.log("the result is "+ res);
 // })
 
 //<<<<<-------Add passenger Data to DB------------------>
@@ -66,8 +66,8 @@ app.use('/',routes);
 // }
 // var pdata = new passenger(pData);
 // pdata.save((err,res)=>{
-//   console.log("the err is"+ err);
-//   console.log("the result is "+ res);
+//   //console.log("the err is"+ err);
+//   //console.log("the result is "+ res);
 // })
 
 module.exports = app;

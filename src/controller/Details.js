@@ -31,7 +31,7 @@ function test(req,res) {
 }
 function updatePassenger(req, res) {
     const response = new Response();
-    console.log("update cntoler");
+    //console.log("update cntoler");
     updateServices.updatePassenger(req.body).then((result) => {
         response.data.result = result;
         response.status.statusCode = 200;
