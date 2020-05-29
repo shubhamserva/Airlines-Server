@@ -7,7 +7,7 @@ const detailsController = require('../controller/Details')
 router.use(bodyParser.json());
 router.post('/addPassenger',detailsController.addPassenger);
 router.get('/getFlights',detailsController.getFlights);
-router.get('',detailsController.test);
+router.get('/',detailsController.test);
 router.post('/addFlight',detailsController.addFlights);
 router.get('/getPassengers',detailsController.getPassengers);
 router.get('/deleteFlight',detailsController.deleteFlights);
