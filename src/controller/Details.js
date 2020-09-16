@@ -88,7 +88,7 @@ function deleteFlights(req){
 
 function addShopItem(req,res) {
     const response = new Response();
-    updateServices.addShopItem(req.body).then((res)=>{
+    updateServices.addShopItem(req.body).then((data)=>{
         response.data.result = data;
         response.status.statusCode = 200;
         response.status.message = "Shopping Item Added";
@@ -193,6 +193,19 @@ function removeAncillaryItems(req,res) {
         res.status(500).json(err);
     })
 }
+function getFlightDetails (req,res) {
+    const response = new Response();
+    updateServices.removeAncillaryItems(req.body).then((data)=>{
+        response.data.result = data;
+        response.status.statusCode = 200;
+        response.status.message = "SERvices removed";
+        res.status(200).json(response);
+    }).catch((err) => {
+        response.status.statusCode = '500';
+        response.status.message = "unable to remove";
+        res.status(500).json(err);
+    })
+}
 
 
 
@@ -201,4 +214,5 @@ function removeAncillaryItems(req,res) {
 module.exports = { getFlights,addPassenger,test,addFlights,
                     getPassengers,deleteFlights,updatePassenger,
                     addShopItem,addService,checkIn,getServices,
-                    updateMeal,addAncillaryServices,removeAncillaryItems}
+                    updateMeal,addAncillaryServices,removeAncillaryItems,
+                    getFlightDetails}
