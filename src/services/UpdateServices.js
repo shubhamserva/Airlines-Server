@@ -89,8 +89,6 @@ function deleteFlights(req) {
 }
 function addShopItem(req) { 
     return new Promise((resolve, reject) => {
-        
-        const passenger = new passengerDetails(req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, 
         { $push: {
                 "ShopRequests": req.ShoppingItem
@@ -107,16 +105,12 @@ function addShopItem(req) {
 }
 function addService(req) {
     return new Promise((resolve, reject) => {
-        //console.log("the add service data is");
-        //console.log(req)
-        const passenger = new passengerDetails(req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $push: {
                 "Services": req.ServiceName
             }
         }, (err, result) => {
             if (!err) {
-                //console.log("added service is ", result);
                 resolve(result);
             }
             else {
@@ -145,9 +139,10 @@ function checkIn(req) {
 }
 function updateMeal(req) {
     return new Promise((resolve, reject) => {
+        console.log("meal",req);
         passengerDetails.findOneAndUpdate({ "PNR": req.PNR }, {
             $set: {
-                "food": req.Meal.Services,
+                "food": req.Meal
             }
         }, (err, result) => {
             if (!err) {
@@ -170,7 +165,6 @@ function getServices(req) {
             })
     })
 }
-
 function addAncillaryServices(req) {
     return new Promise((resolve, reject) => {
         flights.findOneAndUpdate({ "fId": req.fId }, 
@@ -208,10 +202,32 @@ function removeAncillaryItems(req) {
     })
 }
 
+function getFlightDetails(req) {
+    //console.log("aaya2");
+    return new Promise((resolve, reject) => {
+       // var type1 = req.type;
+        //console.log("tye is",req.type);
+        //console.log("request her in servc",req)
+        flights.findOneAndUpdate({ "fId": req.fId }, 
+        { $pull: {
+                [req.type]: req.Service
+            }
+        }, (err, result) => {
+            if (!err) {
+                resolve(result);
+            }
+            else {
+                reject(err);
+            }
+        });
+    })
+}
+
 module.exports = {
     addPassenger, getFlights, addFlights,
     getPassengers, deleteFlights, updatePassenger,
     addShopItem, addService, checkIn, updateMeal,
-    getServices,addAncillaryServices,removeAncillaryItems
+    getServices,addAncillaryServices,removeAncillaryItems,
+    getFlightDetails
 
 }
